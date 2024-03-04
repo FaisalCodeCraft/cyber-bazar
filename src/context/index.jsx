@@ -15,7 +15,7 @@ const ContextProvider = ({ children }) => {
         setKey((prev) => prev + 1)
     }
     return (
-        <UseContext.Provider value={{ inCart, setInCart, mode, setMode, toggleMode ,handleKey,key}}>
+        <UseContext.Provider value={{ inCart, setInCart, mode, setMode, toggleMode ,handleKey,key,setKey}}>
             <Box bgcolor={mode === "light" ? "rgb(248, 248, 255)" : "#212121"}
                 color={mode === "light" ? "black" : "white"}
                 sx={{ transition: "all .7s ease" }}

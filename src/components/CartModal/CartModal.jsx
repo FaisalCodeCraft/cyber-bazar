@@ -64,7 +64,7 @@ const style = {
   maxHeight: "76%",
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 5,
+  p: "2.5em 2.5em 1.5em 2.5em",
   overflowY: "scroll",
   overflowX: "hidden",
 };
@@ -72,10 +72,12 @@ const style = {
 
 const CartModal = (props) => {
   const { color } = props
+  const [incDec, setIncDec] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { mode, inCart, setInCart } = React.useContext(UseContext)
+  const { mode, inCart, setInCart, key } = React.useContext(UseContext)
+
 
 
 
@@ -84,10 +86,29 @@ const CartModal = (props) => {
     setInCart(removeItemFromCArt)
   }
 
-  
+  const handleInc = (i) => {
+    setIncDec(incDec + 1);
+    inCart[i].quantity = inCart[i]?.quantity + 1
+  }
+
+
+  const handleDec = (item) => {
+    setIncDec(incDec - 1);
+    if (item.quantity > 1) {
+      item.quantity = item?.quantity - 1
+    }
+
+  }
+  const totalPrice = inCart.reduce(
+    (initial, curr) => initial + curr.price * curr.quantity,
+    0
+  );
+
+
+
 
   return (
-    <div>
+    <Box >
 
 
       <Box sx={{ cursor: "pointer", pr: { md: 3 }, display: "flex" }}>
@@ -129,8 +150,9 @@ const CartModal = (props) => {
                 </Button>
               </Box>
             </Box>
-            {inCart.map((item) => (
+            {inCart.map((item, i) => (
               <Box
+                key={i}
                 display={"flex"}
                 alignItems={"center"}
                 mt={3}
@@ -163,7 +185,10 @@ const CartModal = (props) => {
                     justifyContent={"space-between"}
                     alignItems={"center"}
                   >
-                    <ExpandLess />
+                    {item.id === inCart[i].id && (
+                      <ExpandLess onClick={() => handleInc(i)} />
+
+                    )}
                     <Typography
                       fontWeight={400}
                       fontSize={"large"}
@@ -171,13 +196,13 @@ const CartModal = (props) => {
                     >
                       {item.quantity}
                     </Typography>
-                    <ExpandMore />
+                    <ExpandMore onClick={() => handleDec(item)} />
                   </Box>
                   <Typography
                     fontWeight={"bold"}
                     color={COLORS.gray.light}
                   >
-                    ${item.price}
+                    ${item?.price * item?.quantity}
                   </Typography>
                   <IconButton sx={btnStyle} onClick={() => handleRemove(item)}>
                     <Close color='error' fontSize='small' />
@@ -190,10 +215,26 @@ const CartModal = (props) => {
                 <Typography mt={5} textAlign={"center"}>Your cart is empty</Typography>
               }
             </Box>
+            <Box
+              display={"flex"}
+              justifyContent={"space-between"}
+              color={COLORS.pink.hotPink}
+              mt={7}
+              p={1}
+              px={3}
+              width={"60%"}
+              mx={"auto"}
+              border={`1px solid ${COLORS.pink.hotPink}`}
+              borderRadius={"8px"}
+
+            >
+              <Typography fontWeight={"bold"}>Total Price:</Typography>
+              <Typography fontWeight={"bold"}>$ {totalPrice}</Typography>
+            </Box>
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </Box>
   );
 }
 

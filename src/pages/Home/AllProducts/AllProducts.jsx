@@ -53,11 +53,12 @@ const AllProducts = () => {
 
         }
         handleKey();
+    
     }
 
     if (isLoading) {
         return (
-            <Box sx={{ width: '40%', m: "auto", mt: 4 ,}}>
+            <Box sx={{ width: '40%', m: "auto", mt: 4, }}>
                 <Typography textAlign={"center"}>Fetching...</Typography>
                 <LinearProgress sx={{
                     bgcolor: "white",
@@ -186,14 +187,14 @@ const AllProducts = () => {
                 <Button
                     sx={btnStyle}
                     onClick={() => setSkip((prev) => prev - 8)}
-                    disabled={skip === 0}
+                    disabled={skip === 0 || prodctCategory}
                 >
                     Prev
                 </Button>
                 <Button
                     sx={btnStyle}
                     onClick={() => setSkip((prev) => prev + 8)}
-                    disabled={ (8 + skip) >= 100}
+                    disabled={(8 + skip) >= 100 || prodctCategory}
                 >
                     Next
                 </Button>
