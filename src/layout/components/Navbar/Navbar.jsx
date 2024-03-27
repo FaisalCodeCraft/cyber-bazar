@@ -12,6 +12,7 @@ import { ShoppingBag } from "@mui/icons-material";
 import ToggleMode from "../../../components/ToggleMode/ToggleMode";
 import CartModal from "../../../components/CartModal/CartModal";
 import { UseContext } from "../../../context";
+import { COLORS } from "constants/contents/color";
 
 
 const Navbar = () => {
@@ -132,7 +133,7 @@ const Navbar = () => {
                   alignItems={"center"}>
                   <ShoppingBag sx={{
                     fontSize: "35px",
-                    color: "rgba(160, 160, 160)"
+                    color: COLORS.pink.hotPink
                   }}
                   />CYBER BAZAAR</Typography>
               </Link>

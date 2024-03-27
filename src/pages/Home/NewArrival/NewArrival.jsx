@@ -1,5 +1,5 @@
-import { ShoppingBag, ShoppingCart } from '@mui/icons-material';
-import { Box, Button, Container, Grid, Rating, Typography } from '@mui/material'
+import {  ShoppingCart } from '@mui/icons-material';
+import { Box, Button, Grid, Rating, Typography } from '@mui/material'
 import { COLORS } from 'constants/contents/color';
 import { NEW_ARRIVALS } from 'constants/contents/data';
 import { UseContext } from 'context';

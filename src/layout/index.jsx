@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar/Navbar'
-import { Box, Divider } from '@mui/material'
+import { Box } from '@mui/material'
 import Footer from './components/Footer/Footer'
 
 const Layout = (props) => {

@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 import { UseContext } from '../../context';
-import { Badge, Button, IconButton, Rating } from '@mui/material';
+import { Badge, Button, IconButton } from '@mui/material';
 import { Close, ExpandLess, ExpandMore, ShoppingCart } from '@mui/icons-material';
 import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -262,7 +262,7 @@ const btnStyle = {
   padding: 1
 }
 const removBtnStyle = {
-  color: COLORS.pink.hotPink,
+ color: COLORS.pink.hotPink,
   border: "1px solid rgb(238,44,130)",
   borderRadius: "40px",
   px: 5,
